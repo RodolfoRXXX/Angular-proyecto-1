@@ -1,0 +1,27 @@
+<div class="container border">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Detalles</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let alumno of alumnos">
+            <th scope="row">{{ alumno.id }}</th>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.apellido }}</td>
+            <td><button class="btn btn-outline-info" (click)="verAlumno( alumno )">Detalles</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button (click)="verDetalle()" [class]="mostrar ? btnNo : btnOk" class="mb-2">{{ mostrar ? "OCULTAR" : "MOSTRAR" }}</button>
+    <br>
+
+    <div *ngIf="alumnoSeleccionado && mostrar">
+        <app-detalle-alumno [alumno]="alumnoSeleccionado"></app-detalle-alumno>
+    </div>
+</div>
